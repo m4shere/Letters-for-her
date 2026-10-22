@@ -1,12 +1,7 @@
-# Letter for her ♡
+# Letters for her ♡
 
 A mobile-first, hand-drawn storybook for five personal letters. It uses plain HTML, CSS and JavaScript—no build step or framework. All letter text is placeholder copy; replace it with your own words before sharing.
 
-## Quick start
-1. Extract the ZIP folder.
-2. Open `letter-for-her/index.html` in a browser. For a more reliable local preview, open the folder in VS Code and use the **Live Server** extension.
-3. In `script.js`, change `RECIPIENT_NAME` and `DELIVERY_PIN` near the top.
-4. Replace each clearly marked placeholder in `letters.js` (see below).
 
 ## Personalise the site
 
