@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 # Letters for Her 💌
+=======
+# Letters for her ♡
+>>>>>>> a75762dc7eeddcc31c90a538730373b22ae217c4
 
 An interactive, storybook-inspired digital letter experience built with HTML, CSS, and JavaScript.
 
+<<<<<<< HEAD
 This project explores how web design, animation, and illustration can transform a simple webpage into an immersive reading experience. It combines envelope interactions, paper-inspired layouts, custom illustrations, and subtle animations to create a digital space for reading letters.
+=======
+>>>>>>> a75762dc7eeddcc31c90a538730373b22ae217c4
 
 ##  Features
 
