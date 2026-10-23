@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#F7EEDF">
   <meta name="description" content="A little hand-delivered collection of letters.">
-  <title>Letter for her ♡</title>
+  <title>Letters for her ♡</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,12 +14,12 @@
 <body>
   <main>
     <section id="welcomePage" class="page welcome paper-grain" aria-labelledby="welcomeTitle">
-      <span class="floating-note">a little delivery for you ♡</span>
+      <span class="floating-note">a little delivery for you meri Jaan♡</span>
       <img class="doodle welcome-doodle" src="assets/svg/doodle-stars.svg" alt="">
       <div class="center-wrap"><div class="welcome-card">
-        <img class="love-stamp big-stamp" src="assets/svg/stamp-love.svg" alt="Love Post stamp">
+        <img class="love-stamp big-stamp" src="assets/svg/postal logo.svg" alt="Love Post stamp">
         <p class="eyebrow">a little something, sent with love</p>
-        <h1 id="welcomeTitle">Letter for her</h1>
+        <h1 id="welcomeTitle">Letters for her</h1>
         <p class="intro">A few little letters have been waiting to find their way to you.</p>
         <button class="primary-btn" id="startDelivery" type="button">Collect your delivery <span aria-hidden="true">↗</span></button>
         <p class="hand-note">When you were not here... ♡</p>
@@ -33,8 +33,8 @@
       <div class="center-wrap"><form class="receipt" id="verifyForm">
         <div class="receipt-top"><div><p class="receipt-kicker">little postal service · form 05</p><h2 id="receiptTitle">Delivery receipt</h2></div><img class="love-stamp receipt-stamp" src="assets/svg/stamp-love.svg" alt="Love Post stamp"></div>
         <p class="hand prompt">One tiny signature before this parcel is yours.</p>
-        <label class="field"><span>Your name</span><input id="recipientName" autocomplete="name" placeholder="Write your name here" required></label>
-        <label class="field"><span>PINCODE</span><input id="recipientPin" type="text" inputmode="text" autocomplete="off" placeholder="Enter your PINCODE" required></label>
+        <label class="field"><span>Your name</span><input id="recipientName" autocomplete="name" placeholder="Recipient's Name" required></label>
+        <label class="field"><span>PINCODE</span><input id="recipientPin" type="text" inputmode="text" autocomplete="off" placeholder="Address PINCODE" required></label>
         <div class="receipt-bottom"><button class="ink-stamp" type="submit">Sign & accept ♥</button><img class="mini-postmark" src="assets/svg/postmark.svg" alt=""></div>
         <p class="form-error" id="formError" role="status" aria-live="polite"></p>
         <p class="fineprint">A little check before the letters are handed over.</p>
@@ -43,28 +43,30 @@
 
     <section id="deskPage" class="page desk hidden" aria-label="Letter desk">
       <div class="desk-stage">
-        <!-- Replace desk-background.jpg here (or set --desk-image in styles.css) with your Figma desk export. -->
+        <!-- Replace desk-background.jpg here (or set --desk-image in styles.css) with Figma desk export. -->
         <div class="desk-surface" aria-hidden="true"></div>
         <!-- Optional edge decorations are separate SVGs and can be removed independently. -->
-        <img class="desk-art spool-art" src="assets/svg/thread-spool.svg" alt="">
-        <img class="desk-art pen-art" src="assets/svg/fountain-pen.svg" alt="">
+        <img class="desk-art spool-art" src="assets/svg/blue pic-holo.webp" alt="">
         <img class="desk-art flower-art" src="assets/svg/flower-bunch.svg" alt="">
-        <img class="desk-art squiggle-art" src="assets/svg/squiggle.svg" alt="">
+        <img class="desk-art squiggle-art" src="assets/svg/loving-hubby.svg" alt="">
         <!-- Optional decorations are placed in free space by script.js; they never cover a letter. -->
         <div class="random-decorations" id="randomDecorations" aria-hidden="true">
           <img class="random-decor" data-size="polaroid" src="assets/svg/polaroid-frame.svg" alt="">
-          <img class="random-decor" data-size="sticky" src="assets/svg/sticky-note.svg" alt="">
+          <img class="desk-art pen-art" src="assets/svg/lip-balm.webp" alt="">
+          <img class="random-decor" data-size="sticky" src="assets/svg/lipstick.svg" alt="">
+          <!-- img class="random-decor" data-size= -->
+          <img class="random-decor" data-size="sticky" src="assets/svg/neck-pic.svg" alt="">
           <img class="random-decor" data-size="flower" src="assets/svg/flower-bunch.svg" alt="">
           <img class="random-decor" data-size="postmark" src="assets/svg/postmark.svg" alt="">
-          <img class="random-decor" data-size="squiggle" src="assets/svg/squiggle.svg" alt="">
+          <img class="random-decor" data-size="squiggle" src="assets/svg/fountain-pen.webp" alt="">
         </div>
         <div class="letter-pile" aria-label="Five letters and a small note">
-          <button class="letter-card letter-one" data-letter="0" type="button" aria-label="Open first letter"><img class="cover-border" src="assets/svg/envelope-border-pink.svg" alt=""><img class="cover-ribbon" src="assets/svg/ribbon.svg" alt="Unread"></button>
-          <button class="letter-card letter-two" data-letter="1" type="button" aria-label="Open second letter"><img class="cover-border" src="assets/svg/envelope-border-blue.svg" alt=""><img class="cover-ribbon" src="assets/svg/ribbon.svg" alt="Unread"></button>
-          <button class="letter-card letter-three" data-letter="2" type="button" aria-label="Open third letter"><img class="cover-border" src="assets/svg/envelope-border-mint.svg" alt=""><img class="cover-ribbon" src="assets/svg/ribbon.svg" alt="Unread"></button>
-          <button class="letter-card letter-four" data-letter="3" type="button" aria-label="Open fourth letter"><img class="cover-border" src="assets/svg/envelope-border-yellow.svg" alt=""><img class="cover-ribbon" src="assets/svg/ribbon.svg" alt="Unread"></button>
-          <button class="letter-card letter-five" data-letter="4" type="button" aria-label="Open fifth letter"><img class="cover-border" src="assets/svg/envelope-border-rose.svg" alt=""><img class="cover-ribbon" src="assets/svg/ribbon.svg" alt="Unread"></button>
-          <aside class="reader-note" aria-label="A little note for the reader"><span class="note-tape" aria-hidden="true"></span><p class="note-label">psst…</p><p class="note-copy">A little note for you</p><span class="note-heart" aria-hidden="true">♡</span></aside>
+          <button class="letter-card letter-one" data-letter="0" type="button" aria-label="Open first letter"><img class="cover-border" src="assets/svg/17-oct.svg" alt=""><img class="cover-ribbon" src="assets/svg/ribbon.svg" alt="Unread"></button>
+          <button class="letter-card letter-two" data-letter="1" type="button" aria-label="Open second letter"><img class="cover-border" src="assets/svg/18-oct.svg" alt=""><img class="cover-ribbon" src="assets/svg/ribbon.svg" alt="Unread"></button>
+          <button class="letter-card letter-three" data-letter="2" type="button" aria-label="Open third letter"><img class="cover-border" src="assets/svg/19-oct.svg" alt=""><img class="cover-ribbon" src="assets/svg/ribbon.svg" alt="Unread"></button>
+          <button class="letter-card letter-four" data-letter="3" type="button" aria-label="Open fourth letter"><img class="cover-border" src="assets/svg/20-oct.svg" alt=""><img class="cover-ribbon" src="assets/svg/ribbon.svg" alt="Unread"></button>
+          <button class="letter-card letter-five" data-letter="4" type="button" aria-label="Open fifth letter"><img class="cover-border" src="assets/svg/21-oct.svg" alt=""><img class="cover-ribbon" src="assets/svg/ribbon.svg" alt="Unread"></button>
+          <aside class="reader-note" aria-label="A little note for the reader"><span class="note-tape" aria-hidden="true"></span><p class="note-label">Oiii…</p><p class="note-copy">I love youu so much meri Zawjaa</p><span class="note-heart" aria-hidden="true">♡</span></aside>
         </div>
       </div>
     </section>
@@ -77,6 +79,19 @@
       <div class="viewer-footer"><button class="tool-btn" id="prevLetter" type="button">← Previous</button><span class="page-count" id="letterCount" aria-live="polite">Letter 1 of 5</span><button class="tool-btn" id="nextLetter" type="button">Next →</button></div>
     </div>
   </div>
+  <!-- Custom animated cursor -->
+<div id="custom-cursor" aria-hidden="true">
+  <img
+    class="cursor-heart"
+    src="assets/svg/cursor-heart.svg"
+    alt=""
+  >
+  <img
+    class="cursor-sunflower"
+    src="assets/svg/cursor-petals.svg"
+    alt=""
+  >
+</div>
   <!-- Letter content is kept separate from behaviour and markup. Load it first. -->
   <script src="letters.js"></script>
   <script src="script.js"></script>

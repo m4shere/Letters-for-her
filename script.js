@@ -1,6 +1,6 @@
 /* PERSONALISE HERE. This is a playful front-end gate, not secure authentication. */
-const RECIPIENT_NAME = "nidaa"; // Change to the recipient's name.
-const DELIVERY_PIN = "123";                 // Change to your chosen code.
+const RECIPIENT_NAME = "nidaa"; // recipient's name.
+const DELIVERY_PIN = "302004";                 // password.
 
 const $ = (id) => document.getElementById(id);
 const pages = [$('welcomePage'), $('verifyPage'), $('deskPage')];
@@ -38,42 +38,101 @@ $('verifyForm').addEventListener('submit', event => {
 // decorative (pointer-events:none) and are hidden if no safe position exists.
 function layoutDeskDecorations() {
   const stage = document.querySelector('.desk-stage');
-  const layer = $('randomDecorations');
-  if (!stage || !layer || $('deskPage').classList.contains('hidden')) return;
-  const mobile = window.matchMedia('(max-width: 700px)').matches;
+  const layer = document.getElementById('randomDecorations');
+
+  if (!stage || !layer ||
+    document.getElementById('deskPage').classList.contains('hidden')) {
+    return;
+  }
+
   const items = [...layer.querySelectorAll('.random-decor')];
-  items.forEach(item => { item.style.visibility = 'hidden'; item.style.left = '0px'; item.style.top = '0px'; });
-  const stageRect = stage.getBoundingClientRect();
-  const reserved = [...stage.querySelectorAll('.letter-card, .reader-note, .desk-art')]
+
+  // Reset every decoration before measuring its natural size.
+  items.forEach(item => {
+    item.style.visibility = 'hidden';
+    item.style.left = '0px';
+    item.style.top = '0px';
+    item.style.transform = 'scale(1)';
+  });
+
+  const layerRect = layer.getBoundingClientRect();
+
+  // Reserve space for envelopes, the note, and fixed desk accessories.
+  const reserved = [
+    ...stage.querySelectorAll('.letter-card, .reader-note, .desk-art')
+  ]
     .filter(el => el.offsetWidth && el.offsetHeight)
     .map(el => padRect(el.getBoundingClientRect(), 12));
+
   const placed = [];
-  const maxItems = mobile ? 1 : 3;
-  const shuffled = items.map(item => ({ item, sort: Math.random() })).sort((a,b) => a.sort-b.sort);
-  let count = 0;
-  for (const {item} of shuffled) {
-    if (count >= maxItems) break;
-    const w = item.getBoundingClientRect().width || 80;
-    const h = item.getBoundingClientRect().height || 80;
+
+  // Place larger decorations first so tiny doodles fill the gaps.
+  items.sort((a, b) => {
+    const ra = a.getBoundingClientRect();
+    const rb = b.getBoundingClientRect();
+    return (rb.width * rb.height) - (ra.width * ra.height);
+  });
+
+  for (const item of items) {
     let found = false;
-    for (let attempt = 0; attempt < 70; attempt++) {
-      const x = 12 + Math.random() * Math.max(1, stageRect.width - w - 24);
-      const y = 12 + Math.random() * Math.max(1, stageRect.height - h - 24);
-      const candidate = {left: stageRect.left + x, top: stageRect.top + y, right: stageRect.left + x + w, bottom: stageRect.top + y + h};
-      if (candidate.left < stageRect.left + 8 || candidate.right > stageRect.right - 8 || candidate.top < stageRect.top + 8 || candidate.bottom > stageRect.bottom - 8) continue;
-      if (reserved.some(rect => overlaps(candidate, rect)) || placed.some(rect => overlaps(candidate, rect))) continue;
-      item.style.left = `${x}px`;
-      item.style.top = `${y}px`;
-      item.style.visibility = 'visible';
-      placed.push(padRect(candidate, 8));
-      found = true;
-      break;
+
+    // Try the original size first, then progressively shrink it.
+    for (const scale of [1, 0.9, 0.8, 0.7, 0.6, 0.5]) {
+      item.style.transform = `scale(${scale})`;
+
+      const rect = item.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+
+      // Keep a safe margin around the edges of the desk.
+      const margin = 10;
+      const maxX = layerRect.width - w - margin;
+      const maxY = layerRect.height - h - margin;
+
+      if (maxX < margin || maxY < margin) continue;
+
+      // Search many candidate positions in the available space.
+      for (let attempt = 0; attempt < 250; attempt++) {
+        const x = margin + Math.random() * (maxX - margin);
+        const y = margin + Math.random() * (maxY - margin);
+
+        const candidate = {
+          left: layerRect.left + x,
+          top: layerRect.top + y,
+          right: layerRect.left + x + w,
+          bottom: layerRect.top + y + h
+        };
+
+        const collidesWithReserved = reserved.some(
+          area => overlaps(candidate, area)
+        );
+
+        const collidesWithDecoration = placed.some(
+          area => overlaps(candidate, area)
+        );
+
+        if (collidesWithReserved || collidesWithDecoration) continue;
+
+        item.style.left = `${x}px`;
+        item.style.top = `${y}px`;
+        item.style.visibility = 'visible';
+
+        placed.push(padRect(candidate, 8));
+        found = true;
+        break;
+      }
+
+      if (found) break;
     }
-    if (found) count++;
+
+    // Hide only when no safe position could be found at any size.
+    if (!found) {
+      item.style.visibility = 'hidden';
+    }
   }
 }
 function padRect(rect, padding) {
-  return {left: rect.left-padding, top: rect.top-padding, right: rect.right+padding, bottom: rect.bottom+padding};
+  return { left: rect.left - padding, top: rect.top - padding, right: rect.right + padding, bottom: rect.bottom + padding };
 }
 function overlaps(a, b) {
   return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
@@ -164,3 +223,57 @@ window.addEventListener('resize', () => {
   window.cancelAnimationFrame(deskLayoutFrame);
   deskLayoutFrame = window.requestAnimationFrame(layoutDeskDecorations);
 });
+
+/* =================================
+   HEART → SUNFLOWER CUSTOM CURSOR-
+================================= */
+(() => {
+  const cursor = document.getElementById("custom-cursor");
+
+  if (!cursor) {
+    console.warn("Custom cursor element not found in index.html");
+    return;
+  }
+
+  // Only activate for devices with a mouse or trackpad.
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    return;
+  }
+
+  document.documentElement.classList.add("custom-cursor-enabled");
+
+  const clickableSelector = [
+    "a",
+    "button",
+    "input",
+    "select",
+    "textarea",
+    "label",
+    "[role='button']",
+    "[onclick]",
+    ".letter-card"
+  ].join(",");
+
+  document.addEventListener("pointermove", (event) => {
+    cursor.style.left = `${event.clientX}px`;
+    cursor.style.top = `${event.clientY}px`;
+    cursor.style.opacity = "1";
+
+    const element = document.elementFromPoint(
+      event.clientX,
+      event.clientY
+    );
+
+    const clickable = element?.closest(clickableSelector);
+
+    cursor.classList.toggle("is-hovering", Boolean(clickable));
+  });
+
+  document.addEventListener("pointerleave", () => {
+    cursor.style.opacity = "0";
+  });
+
+  document.addEventListener("pointerenter", () => {
+    cursor.style.opacity = "1";
+  });
+})();

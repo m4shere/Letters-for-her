@@ -1,1 +1,10 @@
 Place optional desk background exports in this folder. See the root README.md section “Replace the green desk with your own artwork” for the exact CSS change. The site uses a plain green desk unless you choose to add an image.
+
+```css
+.desk-surface {
+  background-color: var(--green);
+  background-image: url("assets/textures/desk-background.jpg");
+  background-size: cover;
+  background-position: center;
+}
+```

@@ -1,84 +1,74 @@
-# Letter for her ♡
+# Letters for Her 💌
 
-A mobile-first, hand-drawn storybook for five personal letters. It uses plain HTML, CSS and JavaScript—no build step or framework. All letter text is placeholder copy; replace it with your own words before sharing.
+An interactive, storybook-inspired digital letter experience built with HTML, CSS, and JavaScript.
 
-## Quick start
-1. Extract the ZIP folder.
-2. Open `letter-for-her/index.html` in a browser. For a more reliable local preview, open the folder in VS Code and use the **Live Server** extension.
-3. In `script.js`, change `RECIPIENT_NAME` and `DELIVERY_PIN` near the top.
-4. Replace each clearly marked placeholder in `letters.js` (see below).
+This project explores how web design, animation, and illustration can transform a simple webpage into an immersive reading experience. It combines envelope interactions, paper-inspired layouts, custom illustrations, and subtle animations to create a digital space for reading letters.
 
-## Personalise the site
+##  Features
 
-### Change the recipient name and code
-Open `script.js` and edit the two constants at the top:
-- `RECIPIENT_NAME`: recipient's name. Matching ignores case and repeated/outer whitespace.
-- `DELIVERY_PIN`: your chosen code. It is intentionally a visible text field, not a password field.
+- **Interactive envelopes** — Select and open individual envelopes through animated interactions.
+- **Letter reader** — Read letters in a paper-inspired layout with navigation between pages.
+- **Opening animations** — Subtle transitions and decorative effects.
+- **Responsive design** — Adapted for both desktop and mobile screens.
+- **Custom illustrations** — Replaceable SVG and image assets for flexible visual customisation.
+- **Desk decorations** — Decorative elements arranged around the main content.
+- **Custom cursor** — An image-based cursor with hover-state animations on supported desktop devices.
+- **Reading controls** — Zoom, close, and previous/next navigation.
+- **Reduced-motion support** — Animation preferences are considered for a more accessible experience.
 
-**Privacy note:** this is a visual gate only. On a static site, the name, code and letter content can be inspected in the downloaded source. Do not put sensitive information here. Real privacy requires server-side verification and only sending the letters after successful verification.
+##  Design Approach
 
-### Edit the five letters
-Open `letters.js`. Each entry has four fields:
-- `date`: date displayed on the paper
-- `title`: heading on the paper
-- `body`: letter text; use `\n\n` between paragraphs
-- `signoff`: closing line
+The visual direction takes inspiration from hand-drawn storybooks, stationery, and paper correspondence.
 
-The five envelopes are mapped by their order in this array. Keep five entries unless you also update the envelope buttons in `index.html`. The envelope covers intentionally have **no date or title overlays**; add those to your own envelope PNG in Figma.
+The interface combines:
+- Deep green backgrounds and warm paper tones.
+- Handwritten typography paired with readable body text.
+- Illustrated envelopes and decorative desk elements.
+- Organic outlines, subtle rotations, and layered paper-like surfaces.
+- Small interactions designed to make the experience feel tactile.
 
-### Replace the artwork with Figma exports
-The replaceable illustrations are in `assets/svg/`. Export transparent SVGs from Figma and keep the same filename to replace an asset without editing code. Keep a sensible viewBox and avoid embedding a full page as one SVG.
+##  Built With
 
-| File | Used for |
-|---|---|
-| `stamp-love.svg` | Landing page and delivery receipt |
-| `ribbon.svg` | Unread ribbon on each envelope; fades away after opening for the current page session |
-| `envelope-border-pink.svg` | Envelope 1 border/background |
-| `envelope-border-blue.svg` | Envelope 2 border/background |
-| `envelope-border-mint.svg` | Envelope 3 border/background |
-| `envelope-border-yellow.svg` | Envelope 4 border/background |
-| `envelope-border-rose.svg` | Envelope 5 border/background |
-| `sticky-note.svg` | Optional random desk accessory |
-| `polaroid-frame.svg` | Optional random desk accessory |
-| `flower.svg` | Landing card and paper decoration |
-| `flower-bunch.svg` | Desk edge decoration |
-| `fountain-pen.svg` | Desk edge decoration |
-| `thread-spool.svg` | Desk edge decoration |
-| `squiggle.svg` | Desk edge decoration |
-| `doodle-stars.svg`, `doodle-heart.svg` | Landing and receipt decoration |
-| `postmark.svg` | Receipt and letter paper |
+- **HTML5** — Page structure and content.
+- **CSS3** — Layout, responsive styling, animations, and visual effects.
+- **Vanilla JavaScript** — Envelope interactions, navigation, and interface behaviour.
+- **SVG and PNG** — Illustrations, textures, and decorative assets.
+- **Google Fonts** — Typography.
 
-The desk accessories are separate files. The small polaroid, sticky note, flower and postmark doodles are selected and placed randomly in free space on the desk; the script checks their rectangles against all five envelopes, the reader note, other random doodles and the larger edge accessories before showing them. If no safe space is found, a doodle stays hidden rather than covering something. You can remove a random accessory by removing its `<img class="random-decor">` line inside `#randomDecorations`.
+The project does not require a JavaScript framework or a build step.
 
-### Replace the envelope artwork
-Export each envelope as a transparent PNG from Figma and place it in `assets/svg/` or create an `assets/envelopes/` folder. In `index.html`, find each button with class `letter-card` and replace the `src` of its `.cover-border` image with your PNG path. The site uses a regular image element, so PNG files work too. Keep the `.cover-ribbon` image as a separate element so the unread ribbon can animate away. The cover no longer adds its own stamp, date or title.
+## 📁 Project Structure
 
-### Replace the green desk with your own artwork
-The desk is plain deep leafy green by default, with a larger fountain pen, a small reader note and optional randomized accessories around the envelopes. To use an exported desk image, place it at `assets/textures/desk-background.jpg`, then in `styles.css` change the `.desk-surface` rule to:
-
-```css
-.desk-surface {
-  background-color: var(--green);
-  background-image: url("assets/textures/desk-background.jpg");
-  background-size: cover;
-  background-position: center;
-}
+```text
+letter-for-her/
+├── index.html
+├── styles.css
+├── script.js
+├── letters.js
+├── assets/
+│   ├── svg/
+│   └── textures/
+└── README.md
 ```
 
-Keep the artwork separate from the envelopes and decorations. The folder `assets/textures/` is included for this optional image.
+| File / Folder | Purpose |
+|---|---|
+| `index.html` | Main page structure |
+| `styles.css` | Visual styling, responsive layout, and animations |
+| `script.js` | Interactions and interface behaviour |
+| `letters.js` | Letter content and related data |
+| `assets/svg/` | Illustrations and interface graphics |
+| `assets/textures/` | Backgrounds and texture assets |
 
-## Publish with GitHub Pages
-1. Create or open a GitHub repository and upload the **contents** of the `letter-for-her` folder (not the outer folder itself, unless you want it hosted as a subdirectory).
-2. Go to **Settings → Pages**.
-3. Under build/deployment, choose **Deploy from a branch**, select `main` and `/(root)`, then save.
-4. Wait for GitHub Pages to publish and open the URL it provides.
 
-## Project map
-- `index.html` — semantic page structure and asset placements
-- `styles.css` — palette, typography, responsive layout, motion and letter styling
-- `letters.js` — all letter content, kept separate from interaction code
-- `script.js` — visual name/code check, transitions, ribbon state, heart burst, reader controls and keyboard shortcuts
-- `assets/svg/` — separate replaceable illustrations, ribbons and optional desk doodles
-- `assets/textures/` — optional replacement desk background
+##  Accessibility
 
-The ribbon state is held only in the current page, not in localStorage; a full reload restores all ribbons. Escape closes the reader; left/right arrow keys navigate letters. Reduced-motion preferences are respected.
+The interface aims to support keyboard interaction, visible focus states, responsive reading, and reduced-motion preferences. Behaviour should be tested across browsers and devices.
+
+##  Project Status
+
+A custom front-end project focused on interactive storytelling, visual design, and responsive web development.
+
+---
+
+*Built as an experiment in combining front-end development with illustration and interaction design.*
