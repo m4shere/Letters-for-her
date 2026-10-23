@@ -22,7 +22,7 @@ const LETTERS = [
 
   {
     date: "21 October, 2026", title: "One more thing", body: "Meri pyaari Layla... \n \n I am intentionally leaving this letter empty right now future me jab tum kabhi randomly wapas se isko visit karogi then ye letter filled hoga... \n \n Beech me revisit karti rahogi abb isko beheheh ;D",
-    signoff: "[Your sign-off]"
+    signoff: "Your hubby <3"
   }
 ];
 

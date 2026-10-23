@@ -1,6 +1,5 @@
 
 # Letters for Her 💌
-=======
 
 This project explores how web design, animation, and illustration can transform a simple webpage into an immersive reading experience. It combines envelope interactions, paper-inspired layouts, custom illustrations, and subtle animations to create a digital space for reading letters.
 
